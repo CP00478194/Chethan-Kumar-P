@@ -407,49 +407,55 @@
         });
     });
 
-    // PDF download functionality using html2canvas
-    document.getElementById('download-pdf').addEventListener('click', function(e) {
-        e.preventDefault();
-        const { jsPDF } = window.jspdf;
-        const doc = new jsPDF();
+   document.getElementById('download-pdf').addEventListener('click', function(e) {
+    e.preventDefault();
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
 
-        // Show all sections temporarily
-        const contents = document.querySelectorAll('.content');
-        contents.forEach(content => content.classList.add('active'));
+    // Show all sections temporarily
+    const contents = document.querySelectorAll('.content');
+    contents.forEach(content => content.classList.add('active'));
 
-        // Hide the navigation bar
-        const nav = document.getElementById('navigation');
-        nav.style.display = 'none';
+    // Hide the navigation bar and photo section
+    const nav = document.getElementById('navigation');
+    nav.style.display = 'none';
 
-        const footer = document.getElementById('download-pdf');
-        footer.style.display = 'none';
+    const footer = document.getElementById('download-pdf');
+    footer.style.display = 'none';
 
-        html2canvas(document.querySelector("#profile-container")).then(canvas => {
-            const imgData = canvas.toDataURL('image/png');
-            const imgWidth = 210; // A4 width in mm
-            const pageHeight = 295; // A4 height in mm
-            const imgHeight = canvas.height * imgWidth / canvas.width;
-            let heightLeft = imgHeight;
-            let position = 0;
+    // Hide the photo section
+    const photoSection = document.getElementById('photo');
+    const originalPhotoDisplay = photoSection.style.display;
+    photoSection.style.display = 'none';
 
+    html2canvas(document.querySelector("#profile-container")).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const imgWidth = 210; // A4 width in mm
+        const pageHeight = 295; // A4 height in mm
+        const imgHeight = canvas.height * imgWidth / canvas.width;
+        let heightLeft = imgHeight;
+        let position = 0;
+
+        doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+
+        while (heightLeft >= 0) {
+            position = heightLeft - imgHeight;
+            doc.addPage();
             doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
             heightLeft -= pageHeight;
+        }
 
-            while (heightLeft >= 0) {
-                position = heightLeft - imgHeight;
-                doc.addPage();
-                doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                heightLeft -= pageHeight;
-            }
+        doc.save("Chethan_Kumar.pdf");
 
-            doc.save("Chethan_Kumar.pdf");
-
-            // Restore the navigation bar and content visibility
-            nav.style.display = 'flex';
-            contents.forEach(content => content.classList.remove('active'));
-            document.querySelector('.content').classList.add('active');
-        });
+        // Restore the navigation bar, photo section, and content visibility
+        nav.style.display = 'flex';
+        footer.style.display = '';
+        photoSection.style.display = originalPhotoDisplay;
+        contents.forEach(content => content.classList.remove('active'));
+        document.querySelector('.content').classList.add('active');
     });
+});
 
     // Lightbox logic: open on click, close on background/cross
     const lightbox = document.getElementById('lightbox-modal');
