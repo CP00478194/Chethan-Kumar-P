@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groom Profile - Chethan Kumar. P</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+    justify-items: center;
+}
+.photo-grid img {
+    width: 100%;
+    max-width: 160px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    background: #f8f8f8;
+}
+#lightbox-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.85);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#lightbox-modal.active {
+    display: flex;
+}
+#lightbox-modal img {
+    max-width: 90vw;
+    max-height: 80vh;
+    border-radius: 8px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+    background: #fff;
+}
+#lightbox-close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10000;
+    user-select: none;
+}
+#lightbox-close:hover {
+    color: #4CAF50;
+}
+@media (max-width: 600px) {
+    .photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    .photo-grid img {
+        max-width: 100px;
+        height: 110px;
+    }
+}
+.photo-grid img {
+    width: 100%;
+    max-width: 160px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    background: #f8f8f8;
+    transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
+    cursor: zoom-in;
+}
+
+.photo-grid img:hover {
+    transform: scale(1.6) translateZ(0);
+    z-index: 10;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+}
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        nav a:hover, nav a.active {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+        .content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        .content.active {
+            display: block;
+            opacity: 1;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #e0e0e0;
+            text-align: left;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .download-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .download-btn:hover {
+            background-color: #45a049;
+        }
+        .photo {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .photo img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="profile-container">
+    <h2>Chethan Kumar. P</h2>
+    <nav id="navigation">
+        <a href="#" data-target="personal-info" class="active">Personal Information</a>
+        <a href="#" data-target="family-background">Family Background</a>
+        <a href="#" data-target="education-career">Education and Career</a>
+        <a href="#" data-target="personal-traits">Personal Traits and Interests</a>
+        <a href="#" data-target="partner-expectations">Expectations from Partner</a>
+        <a href="#" data-target="contact-info">Contact Information</a>
+        <a href="#" data-target="photo">Photo</a>
+    </nav>
+    <div id="personal-info" class="content active">
+        <table>
+            <tr>
+                <th colspan="2">Personal Information</th>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td>Chethan Kumar. P</td>
+            </tr>
+            <tr>
+                <td>Age</td>
+                <td>29</td>
+            </tr>
+            <tr>
+                <td>Height</td>
+                <td>5'5" (169 cm)</td>
+            </tr>
+            <tr>
+                <td>Weight</td>
+                <td>75 kg</td>
+            </tr>
+            <tr>
+                <td>Caste</td>
+                <td>Veerashaiva Lingayat</td>
+            </tr>
+            <tr>
+                <td>Sub-caste</td>
+                <td>Pancha Peeta</td>
+            </tr>
+            <tr>
+                <td>Religion</td>
+                <td>Hinduism</td>
+            </tr>
+            <tr>
+                <td>Mother Tongue</td>
+                <td>Kannada</td>
+            </tr>
+        </table>
+    </div>
+    <div id="family-background" class="content">
+        <table>
+            <tr>
+                <th colspan="2">Family Background</th>
+            </tr>
+            <tr>
+                <td>Father's Name</td>
+                <td>Palakshamurthy. M</td>
+            </tr>
+            <tr>
+                <td>Father's Occupation</td>
+                <td>Business/ Agriculture</td>
+            </tr>
+            <tr>
+                <td>Mother's Name</td>
+                <td>Veena. S</td>
+            </tr>
+            <tr>
+                <td>Mother's Occupation</td>
+                <td>Housewife</td>
+            </tr>
+            <tr>
+                <td>Family Values</td>
+                <td>Blend of traditional and modern values</td>
+            </tr>
+            <tr>
+                <td>Family Type</td>
+                <td>Nuclear Family</td>
+            </tr>
+            <tr>
+                <td>Family Status</td>
+                <td>Affluent, socially respected</td>
+            </tr>
+            <tr>
+                <td>Ancestral Origin</td>
+                <td>Arasikere, Karnataka</td>
+            </tr>
+        </table>
+    </div>
+    <div id="education-career" class="content">
+        <table>
+            <tr>
+                <th colspan="2">Education and Career</th>
+            </tr>
+            <tr>
+                <td>Education Level</td>
+                <td>BSc</td>
+            </tr>
+            <tr>
+                <td>Field of Study</td>
+                <td>Computer Science</td>
+            </tr>
+            <tr>
+                <td>Occupation</td>
+                <td>Software Development Engineer in Test [SDET]</td>
+            </tr>
+            <tr>
+                <td>Employer</td>
+                <td>Deloitte</td>
+            </tr>
+
+        </table>
+    </div>
+    <div id="personal-traits" class="content">
+        <table>
+            <tr>
+                <th colspan="2">Personal Traits and Interests</th>
+            </tr>
+            <tr>
+                <td>Personality</td>
+                <td>Friendly, Ambitious, and Family-oriented</td>
+            </tr>
+            <tr>
+                <td>Known for</td>
+                <td>Leadership skills and community involvement</td>
+            </tr>
+            <tr>
+                <td>Hobbies</td>
+                <td>Traveling</td>
+            </tr>
+            <tr>
+                <td>Languages Known</td>
+                <td>Kannada, English, Hindi, and Tamil</td>
+            </tr>
+            <tr>
+                <td>Lifestyle</td>
+                <td>Active, with a focus on fitness and wellness</td>
+            </tr>
+            <tr>
+                <td>Diet</td>
+                <td>Vegetarian</td>
+            </tr>
+        </table>
+    </div>
+    <div id="partner-expectations" class="content">
+        <table>
+            <tr>
+                <th colspan="2">Expectations from Partner</th>
+            </tr>
+            <tr>
+                <td>Preferred Age Range</td>
+                <td>23-29</td>
+            </tr>
+            <tr>
+                <td>Preferred Height Range</td>
+                <td>5'1" to 5'5"</td>
+            </tr>
+            <tr>
+                <td>Occupation</td>
+                <td>Professional in a respected field</td>
+            </tr>
+            <tr>
+                <td>Other Preferences</td>
+                <td>
+                    - Should share similar family values and cultural background<br>
+                    - Open to participating in family activities and social events<br>
+                    - Preferably from a similar socio-economic background
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="contact-info" class="content">
+        <table>
+            <tr>
+                <th colspan="2">Contact Information</th>
+            </tr>
+            <tr>
+                <td>Contact Person</td>
+                <td>Chethan Kumar. P</td>
+            </tr>
+            <tr>
+                <td>Phone Number</td>
+                <td>+91 9164473932</td>
+            </tr>
+            <tr>
+                <td>Email Address</td>
+                <td>chethan.sheifu@gmail.com</td>
+            </tr>
+            <tr>
+                <th colspan="2">Additional Information</th>
+            </tr>
+            <tr>
+                <td>Horoscope Details</td>
+                <td>
+                    <table>
+                        <tr><td>Date of Birth :</td><td>3rd December 1995</td></tr>
+                        <tr><td>Time of Birth :</td><td>11:30 PM</td></tr>
+                        <tr><td>Rashi         :</td><td>Mesha Rashi (Aries)</td></tr>
+                        <tr><td>Nakshatra     :</td><td>Ashwini</td></tr>
+                        <tr><td>Place of Birth:</td><td>Mysore, Karnataka</td></tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="photo" class="content">
+        <div class="photo-grid">
+            <img src="/photo/Chethan_1.jpg" alt="Chethan Kumar 1">
+            <img src="/photo/Chethan_2.jpg" alt="Chethan Kumar 2">
+            <img src="/photo/Chethan_3.jpg" alt="Chethan Kumar 3">
+            <img src="/photo/Chethan_4.jpg" alt="Chethan Kumar 4">
+            <img src="/photo/Chethan_5.jpg" alt="Chethan Kumar 5">
+            <img src="/photo/Chethan_6.jpg" alt="Chethan Kumar 6">
+            <img src="/photo/Chethan_7.jpg" alt="Chethan Kumar 7">
+            <img src="/photo/Chethan_8.jpg" alt="Chethan Kumar 8">
+        </div>
+    </div>
+    <a href="#" class="download-btn" id="download-pdf">Download Profile as PDF</a>
+</div>
+<div id="lightbox-modal" style="display:none;">
+    <span id="lightbox-close">&times;</span>
+    <img id="lightbox-img" src="" alt="Zoomed Photo">
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelectorAll('.content').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('nav a').forEach(navLink => {
+                navLink.classList.remove('active');
+            });
+            document.getElementById(this.dataset.target).classList.add('active');
+            this.classList.add('active');
+        });
+    });
+
+    // PDF download functionality using html2canvas
+    document.getElementById('download-pdf').addEventListener('click', function(e) {
+        e.preventDefault();
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        // Show all sections temporarily
+        const contents = document.querySelectorAll('.content');
+        contents.forEach(content => content.classList.add('active'));
+
+        // Hide the navigation bar
+        const nav = document.getElementById('navigation');
+        nav.style.display = 'none';
+
+        const footer = document.getElementById('download-pdf');
+        footer.style.display = 'none';
+
+        html2canvas(document.querySelector("#profile-container")).then(canvas => {
+            const imgData = canvas.toDataURL('image/png');
+            const imgWidth = 210; // A4 width in mm
+            const pageHeight = 295; // A4 height in mm
+            const imgHeight = canvas.height * imgWidth / canvas.width;
+            let heightLeft = imgHeight;
+            let position = 0;
+
+            doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
+
+            while (heightLeft >= 0) {
+                position = heightLeft - imgHeight;
+                doc.addPage();
+                doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+            }
+
+            doc.save("Chethan_Kumar.pdf");
+
+            // Restore the navigation bar and content visibility
+            nav.style.display = 'flex';
+            contents.forEach(content => content.classList.remove('active'));
+            document.querySelector('.content').classList.add('active');
+        });
+    });
+
+    document.querySelectorAll('.photo-grid img').forEach(img => {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', function() {
+        const lightbox = document.getElementById('lightbox-modal');
+        const lightboxImg = document.getElementById('lightbox-img');
+        lightboxImg.src = this.src;
+        lightbox.classList.add('active');
+    });
+});
+document.getElementById('lightbox-close').addEventListener('click', function() {
+    document.getElementById('lightbox-modal').classList.remove('active');
+});
+document.getElementById('lightbox-modal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        this.classList.remove('active');
+    }
+});
+</script>
+
+</body>
+</html>
