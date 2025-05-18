@@ -13,83 +13,61 @@
             color: #333;
         }
         .photo-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 16px;
-    margin-top: 20px;
-    justify-items: center;
-}
-.photo-grid img {
-    width: 100%;
-    max-width: 160px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    background: #f8f8f8;
-}
-#lightbox-modal {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0; top: 0;
-    width: 100vw; height: 100vh;
-    background: rgba(0,0,0,0.85);
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-#lightbox-modal.active {
-    display: flex;
-}
-#lightbox-modal img {
-    max-width: 90vw;
-    max-height: 80vh;
-    border-radius: 8px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.5);
-    background: #fff;
-}
-#lightbox-close {
-    position: absolute;
-    top: 30px;
-    right: 40px;
-    color: #fff;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 10000;
-    user-select: none;
-}
-#lightbox-close:hover {
-    color: #4CAF50;
-}
-@media (max-width: 600px) {
-    .photo-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-    .photo-grid img {
-        max-width: 100px;
-        height: 110px;
-    }
-}
-.photo-grid img {
-    width: 100%;
-    max-width: 160px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    background: #f8f8f8;
-    transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
-    cursor: zoom-in;
-}
-
-.photo-grid img:hover {
-    transform: scale(1.6) translateZ(0);
-    z-index: 10;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-}
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+            justify-items: center;
+        }
+        .photo-grid img {
+            width: 100%;
+            max-width: 160px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            background: #f8f8f8;
+            transition: box-shadow 0.3s;
+            cursor: zoom-in;
+        }
+        #lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0; top: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.92);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: opacity 0.3s;
+        }
+        #lightbox-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+        #lightbox-modal img {
+            max-width: 95vw;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+            background: #fff;
+            object-fit: contain;
+        }
+        #lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10000;
+            user-select: none;
+        }
+        #lightbox-close:hover {
+            color: #4CAF50;
+        }
         .container {
             max-width: 900px;
             margin: 40px auto;
@@ -175,6 +153,14 @@
             }
             th, td {
                 padding: 8px;
+            }
+            .photo-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            .photo-grid img {
+                max-width: 100px;
+                height: 110px;
             }
         }
     </style>
@@ -386,26 +372,27 @@
         </table>
     </div>
     <div id="photo" class="content">
-    <div class="photo-grid">
-        <img src="photo/Chethan_1.jpg" alt="Chethan Kumar 1">
-        <img src="photo/Chethan_2.jpg" alt="Chethan Kumar 2">
-        <img src="photo/Chethan_3.JPG" alt="Chethan Kumar 3">
-        <img src="photo/Chethan_4.jpg" alt="Chethan Kumar 4">
-        <img src="photo/Chethan_5.jpg" alt="Chethan Kumar 5">
-        <img src="photo/Chethan_6.jpg" alt="Chethan Kumar 6">
-        <img src="photo/Chethan_7.jpg" alt="Chethan Kumar 7">
-        <img src="photo/Chethan_8.jpg" alt="Chethan Kumar 8">
+        <div class="photo-grid">
+            <img src="photo/Chethan_1.jpg" alt="Chethan Kumar 1" data-hd="photo/Chethan_1.jpg">
+            <img src="photo/Chethan_2.jpg" alt="Chethan Kumar 2" data-hd="photo/Chethan_2.jpg">
+            <img src="photo/Chethan_3.jpg" alt="Chethan Kumar 3" data-hd="photo/Chethan_3.jpg">
+            <img src="photo/Chethan_4.jpg" alt="Chethan Kumar 4" data-hd="photo/Chethan_4.jpg">
+            <img src="photo/Chethan_5.jpg" alt="Chethan Kumar 5" data-hd="photo/Chethan_5.jpg">
+            <img src="photo/Chethan_6.jpg" alt="Chethan Kumar 6" data-hd="photo/Chethan_6.jpg">
+            <img src="photo/Chethan_7.jpg" alt="Chethan Kumar 7" data-hd="photo/Chethan_7.jpg">
+            <img src="photo/Chethan_8.jpg" alt="Chethan Kumar 8" data-hd="photo/Chethan_8.jpg">
+        </div>
     </div>
-</div>
     <a href="#" class="download-btn" id="download-pdf">Download Profile as PDF</a>
 </div>
-<div id="lightbox-modal" style="display:none;">
+<div id="lightbox-modal">
     <span id="lightbox-close">&times;</span>
     <img id="lightbox-img" src="" alt="Zoomed Photo">
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
+    // Navigation
     document.querySelectorAll('nav a').forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
@@ -464,24 +451,30 @@
         });
     });
 
-    document.querySelectorAll('.photo-grid img').forEach(img => {
-    img.style.cursor = 'zoom-in';
-    img.addEventListener('click', function() {
-        const lightbox = document.getElementById('lightbox-modal');
-        const lightboxImg = document.getElementById('lightbox-img');
-        lightboxImg.src = this.src;
-        lightbox.classList.add('active');
-    });
-});
-document.getElementById('lightbox-close').addEventListener('click', function() {
-    document.getElementById('lightbox-modal').classList.remove('active');
-});
-document.getElementById('lightbox-modal').addEventListener('click', function(e) {
-    if (e.target === this) {
-        this.classList.remove('active');
-    }
-});
-</script>
+    // Lightbox logic: open on click, close on background/cross
+    const lightbox = document.getElementById('lightbox-modal');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.getElementById('lightbox-close');
 
+    document.querySelectorAll('.photo-grid img').forEach(img => {
+        img.addEventListener('click', function(e) {
+            const hdSrc = img.getAttribute('data-hd') || img.src;
+            lightboxImg.src = hdSrc;
+            lightbox.classList.add('active');
+        });
+    });
+
+    closeBtn.addEventListener('click', function() {
+        lightbox.classList.remove('active');
+        lightboxImg.src = "";
+    });
+
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+            lightbox.classList.remove('active');
+            lightboxImg.src = "";
+        }
+    });
+</script>
 </body>
 </html>
